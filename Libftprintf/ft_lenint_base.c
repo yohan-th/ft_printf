@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "stdlib.h"
+#include "libft.h"
 
 /*
 ** Compte la longeur d'un int selon une base.
