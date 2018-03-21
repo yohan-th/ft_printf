@@ -45,7 +45,7 @@ intmax_t	ft_type_int(va_list ap, char type)
 {
 	intmax_t data;
 
-	if (ft_strchr("oOuUxX", type))
+	if (ft_strchr("oOuUxXb", type))
 		data = (intmax_t)va_arg(ap, uintmax_t);
 	else if (ft_strchr("dDi", type))
 		data = (intmax_t)va_arg(ap, intmax_t);
@@ -64,7 +64,7 @@ intmax_t	ft_type(va_list ap, t_fields *fields)
 		data = ft_type_char(ap, fields->type);
 	else if (ft_strchr("sS", fields->type))
 		data = ft_type_str(ap, fields->type);
-	else if (ft_strchr("dDioOuUxXp", fields->type))
+	else if (ft_strchr("dDioOuUxXpb", fields->type))
 		data = ft_type_int(ap, fields->type);
 	else
 		return (0);

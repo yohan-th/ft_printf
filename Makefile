@@ -37,7 +37,8 @@ SRCS = 	ft_printf.c \
 		ft_cvt_s.c \
 		ft_cvt_o.c \
 		ft_cvt_diu.c \
-		ft_cvt_xp.c
+		ft_cvt_xp.c \
+		ft_cvt_br.c
 
 OBJS = $(addprefix $(DIR_OBJ)/,$(SRCS:.c=.o))
 

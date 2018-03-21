@@ -22,7 +22,7 @@
 # include <limits.h>
 # include "libft.h"
 
-# define PRINTF_TYPE "sSpdDioOuUxXcC%"
+# define PRINTF_TYPE "sSpdDioOuUxXcC%br"
 # define PRINTF_ALL_FIELDS "#0-+ *123456789.hljz"
 # define PRINTF_FLAGS "-+0 #"
 # define PRINTF_SIZE "hljz"
@@ -78,5 +78,6 @@ t_prints		ft_cvt_c(t_prints *data_prt, t_fields *fields);
 t_prints		ft_cvt_diu(t_prints *print, t_fields *fields);
 t_prints		ft_cvt_xp(t_prints *data_prt, t_fields *fields);
 t_prints		ft_cvt_o(t_prints *data_prt, t_fields *fields);
+t_prints		ft_cvt_br(t_prints *print, t_fields *fields);
 
 #endif

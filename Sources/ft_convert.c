@@ -29,5 +29,7 @@ t_prints	ft_convert(intmax_t *data, t_fields *fields)
 		print = ft_cvt_xp(&print, fields);
 	else if (ft_strchr("oO", fields->type))
 		print = ft_cvt_o(&print, fields);
+	else if (ft_strchr("br", fields->type))
+		print = ft_cvt_br(&print, fields);
 	return (print);
 }

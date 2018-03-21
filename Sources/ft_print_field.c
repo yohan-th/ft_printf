@@ -81,7 +81,7 @@ int		ft_print_int(t_prints *print, t_fields *fields, int len_print)
 	else if (ft_strchr("uU", fields->type) &&
 		!(fields->point && print->data == 0))
 		len_print += ft_putnbr_unsigned((intmax_t)print->data);
-	else if (ft_strchr("xXoOp", fields->type))
+	else if (ft_strchr("xXoOpb", fields->type))
 		len_print += ft_putstr((char *)print->data);
 	len_print += ft_print_flags_aftr(print);
 	return (len_print);
@@ -94,9 +94,9 @@ int		ft_print_field(t_prints *print, t_fields *fields)
 	len_print = 0;
 	if (ft_strchr("cCsS%", fields->type))
 		len_print = ft_print_txt(print, fields->type, len_print);
-	else if (ft_strchr("dDixXoOuUp", fields->type))
+	else if (ft_strchr("dDixXoOuUpb", fields->type))
 		len_print = ft_print_int(print, fields, len_print);
-	if (ft_strchr("sSxXoOp", fields->type) && print->free == 1)
+	if (ft_strchr("sSxXoOpb", fields->type) && print->free == 1)
 		free(print->data);
 	return (len_print);
 }
