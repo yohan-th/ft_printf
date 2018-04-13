@@ -17,6 +17,6 @@
 
 int main(int argc, char const *argv[])
 {
-	ft_printf("TEST %b\n", 5);
+	ft_printf("gris {red}rouge{eoc} gris\n");
 	return 0;
 }
