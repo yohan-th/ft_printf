@@ -60,6 +60,8 @@ intmax_t	ft_type(va_list ap, t_fields *fields)
 {
 	intmax_t data;
 
+	if (fields.width == -1)
+		;//prendre la premier param dans width et psser au suivant pour data
 	if (ft_strchr("cC%", fields->type))
 		data = ft_type_char(ap, fields->type);
 	else if (ft_strchr("sS", fields->type))

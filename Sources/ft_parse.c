@@ -118,6 +118,11 @@ t_fields	ft_parse(const char **format)
 	fields.width = ft_strnbr(*format);
 	if (fields.width)
 		(*format) += ft_lenint(fields.width);
+	else if (**format == '*')
+	{
+		fields.width = -1;
+		(*format)++;
+	}
 	ft_parse_precision(&fields, format);
 	ft_parse_size(&fields, format);
 	while (!(ft_strchr(PRINTF_TYPE, **format)))

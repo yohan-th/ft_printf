@@ -19,7 +19,7 @@ CFLAGS = -c -Wall -Wextra -Werror
 
 NAME = libftprintf.a
 
-DIR_LIB = Libftprintf
+DIR_LIB = Libft
 
 DIR_INC = Includes
 
@@ -46,7 +46,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@make -C $(DIR_LIB)
-	@cp ./$(DIR_LIB)/libftprintf.a ./$(NAME)
+	@cp ./$(DIR_LIB)/libft.a ./$(NAME)
 	@ar -rcs $(NAME) $(OBJS)
 
 $(DIR_OBJ)/%.o: $(DIR_SRC)/%.c

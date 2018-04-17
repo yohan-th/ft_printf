@@ -64,14 +64,7 @@ int		ft_undef_beha(const char **format)
 		return (-1);
 	return (0);
 }
-/*
-void	ft_write_color(char **format, t_prints *print)
-{
-	char *tmp;
 
-	write(1, "\033[1;36;40mtest\n", 18);
-}
-*/
 int		ft_printf(const char *format, ...)
 {
 	va_list		ap;
