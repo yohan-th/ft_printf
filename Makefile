@@ -19,7 +19,7 @@ CFLAGS = -c -Wall -Wextra -Werror
 
 NAME = libftprintf.a
 
-DIR_LIB = Libft
+DIR_LIB = Libftprintf
 
 DIR_INC = Includes
 
