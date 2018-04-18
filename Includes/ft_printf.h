@@ -27,9 +27,8 @@
 # define PRINTF_FLAGS "-+0 #"
 # define PRINTF_SIZE "hljz"
 # define PRINTF_NUMBERS "0123456789"
-# define BOOL char
 
-typedef struct	s_fields
+typedef struct	s_pf_fields
 {
 	BOOL	diese;
 	BOOL	zero;
@@ -41,9 +40,9 @@ typedef struct	s_fields
 	int		width;
 	int		precision;
 	char	type;
-}				t_fields;
+}				t_pf_fields;
 
-typedef struct	s_prints
+typedef struct	s_pf_prints
 {
 	void		*data;
 	int			space_bfr;
@@ -51,21 +50,21 @@ typedef struct	s_prints
 	int			zero_bfr;
 	int			zero_aftr;
 	int			plus;
-	int			moins;
+	int			minus;
 	int			space;
 	int			zero_x;
 	int			zero_x_up;
 	int			free;
-}				t_prints;
+}				t_pf_prints;
 
 int				ft_printf(const char *format, ...);
-t_fields		ft_fields_reset(void);
-t_fields		ft_parse(const char **format);
-intmax_t		ft_type(va_list ap, t_fields *fields);
-t_prints		ft_convert(intmax_t *data, t_fields *fields);
-int				ft_print_field(t_prints *data_prt, t_fields *fields);
-t_prints		ft_print_reset(void);
-void			ft_parse_flags(t_fields *fields, const char **format);
+t_pf_fields		pf_fields_reset(void);
+t_pf_fields		pf_parse(const char **format);
+intmax_t		    pf_type(va_list ap, t_pf_fields *fields);
+t_pf_prints		pf_convert(intmax_t *data, t_pf_fields *fields);
+int				pf_print_field(t_pf_prints *data_prt, t_pf_fields *fields);
+t_pf_prints		pf_print_reset(void);
+void			    pf_parse_flags(t_pf_fields *fields, const char **format);
 
 /*
 **┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -73,11 +72,11 @@ void			ft_parse_flags(t_fields *fields, const char **format);
 **┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 */
 
-t_prints		ft_cvt_s(t_prints *data_prt, t_fields *fields);
-t_prints		ft_cvt_c(t_prints *data_prt, t_fields *fields);
-t_prints		ft_cvt_diu(t_prints *print, t_fields *fields);
-t_prints		ft_cvt_xp(t_prints *data_prt, t_fields *fields);
-t_prints		ft_cvt_o(t_prints *data_prt, t_fields *fields);
-t_prints		ft_cvt_br(t_prints *print, t_fields *fields);
+t_pf_prints		pf_cvt_s(t_pf_prints *data_prt, t_pf_fields *fields);
+t_pf_prints		pf_cvt_c(t_pf_prints *data_prt, t_pf_fields *fields);
+t_pf_prints		pf_cvt_diu(t_pf_prints *print, t_pf_fields *fields);
+t_pf_prints		pf_cvt_xp(t_pf_prints *data_prt, t_pf_fields *fields);
+t_pf_prints		pf_cvt_o(t_pf_prints *data_prt, t_pf_fields *fields);
+t_pf_prints		pf_cvt_br(t_pf_prints *print, t_pf_fields *fields);
 
 #endif
