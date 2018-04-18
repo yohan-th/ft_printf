@@ -28,17 +28,17 @@ DIR_SRC = Sources
 DIR_OBJ = Objects
 
 SRCS = 	ft_printf.c \
-		ft_parse.c \
-		ft_type.c \
-		ft_convert.c \
-		ft_print_field.c \
-		ft_struct.c \
-		ft_cvt_c.c \
-		ft_cvt_s.c \
-		ft_cvt_o.c \
-		ft_cvt_diu.c \
-		ft_cvt_xp.c \
-		ft_cvt_br.c
+		pf_parse.c \
+		pf_type.c \
+		pf_convert.c \
+		pf_print_field.c \
+		pf_struct.c \
+		pf_cvt_c.c \
+		pf_cvt_s.c \
+		pf_cvt_o.c \
+		pf_cvt_diu.c \
+		pf_cvt_xp.c \
+		pf_cvt_br.c
 
 OBJS = $(addprefix $(DIR_OBJ)/,$(SRCS:.c=.o))
 
