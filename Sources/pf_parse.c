@@ -38,7 +38,7 @@ void		pf_parse_flags(t_pf_fields *fields, const char **format)
 void		ft_parse_precision(t_pf_fields *fields, const char **format)
 {
 	int		i;
-	char		*tmp;
+	char	*tmp;
 
 	i = 0;
 	if (**format == '.')
@@ -116,7 +116,7 @@ t_pf_fields	pf_parse(const char **format)
 
 	str = *format;
 	fields = pf_fields_reset();
-    pf_parse_flags(&fields, format);
+	pf_parse_flags(&fields, format);
 	fields.width = ft_strnbr(*format);
 	if (fields.width)
 		(*format) += ft_lenint(fields.width);
