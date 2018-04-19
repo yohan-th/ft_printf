@@ -16,6 +16,6 @@
 
 int main(int argc, char const *argv[])
 {
-	ft_printf("%*.*d\n", 3, 2, 8);
+	ft_printf("{%5*d}", 15, 42);
 	return 0;
 }

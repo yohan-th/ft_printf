@@ -37,6 +37,8 @@ typedef struct	s_pf_fields
 	BOOL	space;
 	BOOL	point;
 	BOOL	size;
+	BOOL	wldcrd_prec;
+	BOOL	wldcrd_width;
 	int		width;
 	int		precision;
 	char	type;
@@ -65,6 +67,7 @@ t_pf_prints		pf_convert(intmax_t *data, t_pf_fields *fields);
 int				pf_print_field(t_pf_prints *data_prt, t_pf_fields *fields);
 t_pf_prints		pf_print_reset(void);
 void			pf_parse_flags(t_pf_fields *fields, const char **format);
+void			pf_parse_correct(t_pf_fields *fields, char type, const char *str);
 
 /*
 **┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓

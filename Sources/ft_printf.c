@@ -13,6 +13,39 @@
 
 #include "../Includes/ft_printf.h"
 
+/*
+** pf_parse_correct, ft_undef_char, ft_undef_beha sont des fonctions
+** qui ont pour role de strictement respecter printf et ses cas non définis
+** Elles sont inutiles si on utilise correctement printf 
+*/
+
+void	pf_parse_correct(t_pf_fields *fields, char type, const char *str)
+{
+	while (*str != type)
+	{
+		if (*str == '#')
+			fields->diese = 1;
+		if (*str == '+')
+			fields->plus = 1;
+		if (*str == '-')
+			fields->moins = 1;
+		if (*str == '*' && *(str - 1) == '.')
+			fields->wldcrd_prec = 1;
+		str++;
+	}
+	if (fields->moins && fields->zero)
+		fields->zero = 0;
+	if (fields->space && fields->plus)
+		fields->space = 0;
+	if (fields->space && (fields->plus || ft_strchr("uUoO", fields->type)))
+		fields->space = 0;
+	if (fields->zero && fields->point && !ft_strchr("cCsS%", fields->type)
+		&& !fields->wldcrd_prec)
+		fields->zero = 0;
+	if (fields->type == 's' && ft_strchr("lL", fields->size))
+		fields->type = 'S';
+}
+
 int		ft_undef_char(const char **format)
 {
 	t_pf_fields	fields;

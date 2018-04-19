@@ -27,6 +27,8 @@ t_pf_fields	pf_fields_reset(void)
 	fields.width = 0;
 	fields.precision = 0;
 	fields.type = 0;
+	fields.wldcrd_width = 0;
+	fields.wldcrd_prec = 0;
 	return (fields);
 }
 

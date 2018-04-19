@@ -56,14 +56,30 @@ intmax_t	ft_type_int(va_list ap, char type)
 	return (data);
 }
 
+void		ft_type_wildcard(va_list ap, t_pf_fields *fields)
+{
+	if (fields->width == -1)
+		fields->width = va_arg(ap, int);
+	if (fields->width < 0)
+	{
+		fields->moins = 1;
+		fields->width *= -1;
+	}
+	else if (fields->wldcrd_width)
+		va_arg(ap, int);
+	if (fields->precision == -1)
+		fields->precision = va_arg(ap, int);
+	if (fields->precision < 0)
+		fields->point = 0;
+	if (fields->precision < 0)
+		fields->precision = 0;
+}
+
 intmax_t	pf_type(va_list ap, t_pf_fields *fields)
 {
 	intmax_t data;
 
-	if (fields->width == -1)
-		fields->width = va_arg(ap, int);
-	if (fields->precision == -1)
-		fields->precision = va_arg(ap, int);
+	ft_type_wildcard(ap, fields);
 	if (ft_strchr("cC%", fields->type))
 		data = ft_type_char(ap, fields->type);
 	else if (ft_strchr("sS", fields->type))

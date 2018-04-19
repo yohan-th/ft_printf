@@ -54,7 +54,9 @@ void		ft_parse_precision(t_pf_fields *fields, const char **format)
 			free(tmp);
 		}
 		else if (**format == '*')
+		{
 			fields->precision = -1;
+		}
 	}
 	*format += i;
 }
@@ -85,28 +87,21 @@ void		ft_parse_size(t_pf_fields *fields, const char **format)
 	*format += i;
 }
 
-void		ft_parse_correct(t_pf_fields *fields, char type, const char *str)
+void		ft_parse_width(t_pf_fields *fields, const char **format)
 {
-	while (*str != type)
+	if (**format == '*' && ft_strnbr(*format + 1))
 	{
-		if (*str == '#')
-			fields->diese = 1;
-		if (*str == '+')
-			fields->plus = 1;
-		if (*str == '-')
-			fields->moins = 1;
-		str++;
+		fields->wldcrd_width = 1;
+		(*format)++;
 	}
-	if (fields->moins && fields->zero)
-		fields->zero = 0;
-	if (fields->space && fields->plus)
-		fields->space = 0;
-	if (fields->space && (fields->plus || ft_strchr("uUoO", fields->type)))
-		fields->space = 0;
-	if (fields->zero && fields->point && !ft_strchr("cCsS%", fields->type))
-		fields->zero = 0;
-	if (fields->type == 's' && ft_strchr("lL", fields->size))
-		fields->type = 'S';
+	fields->width = ft_strnbr(*format);
+	if (fields->width)
+		(*format) += ft_lenint(fields->width);
+	if (**format == '*')
+	{
+		fields->width = -1;
+		(*format)++;
+	}
 }
 
 t_pf_fields	pf_parse(const char **format)
@@ -117,20 +112,13 @@ t_pf_fields	pf_parse(const char **format)
 	str = *format;
 	fields = pf_fields_reset();
 	pf_parse_flags(&fields, format);
-	fields.width = ft_strnbr(*format);
-	if (fields.width)
-		(*format) += ft_lenint(fields.width);
-	else if (**format == '*')
-	{
-		fields.width = -1;
-		(*format)++;
-	}
+	ft_parse_width(&fields, format);
 	ft_parse_precision(&fields, format);
 	ft_parse_size(&fields, format);
 	while (!(ft_strchr(PRINTF_TYPE, **format)))
 		(*format)++;
 	fields.type = **format;
-	ft_parse_correct(&fields, fields.type, str);
+	pf_parse_correct(&fields, fields.type, str);
 	(*format)++;
 	return (fields);
 }
